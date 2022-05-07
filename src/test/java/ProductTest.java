@@ -13,7 +13,7 @@ class ProductTest {
     Smartphone SmartphoneSecond = new Smartphone(5, "Android", "Samsung");
 
     @Test
-    void Test() {
+    void shouldAdditemAndDelId() {
         ProductManager manager = new ProductManager();
 
 
@@ -32,7 +32,7 @@ class ProductTest {
     }
 
     @Test
-    void Test2() {
+    void shouldAddItems() {
         ProductManager manager = new ProductManager();
 
 
@@ -47,7 +47,7 @@ class ProductTest {
     }
 
     @Test
-    void TestSearch() {
+    void shouldItem() {
         ProductManager manager = new ProductManager();
 
         manager.add(bookFirst);
