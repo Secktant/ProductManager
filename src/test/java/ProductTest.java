@@ -13,7 +13,7 @@ class ProductTest {
     Smartphone SmartphoneSecond = new Smartphone(5, "Android", "Samsung");
 
     @Test
-    void shouldAdditemAndDelId() {
+    void shouldAddItemAndDelId() {
         ProductManager manager = new ProductManager();
 
 
@@ -32,22 +32,23 @@ class ProductTest {
     }
 
     @Test
-    void shouldAddItems() {
+    void shouldAddBooksAndSmartphone() {
         ProductManager manager = new ProductManager();
 
 
         manager.add(bookFirst);
         manager.add(bookSecond);
         manager.add(bookThird);
+        manager.add(smartphoneFirst);
 
         Product[] actual = manager.findAll();
-        Product[] expected = new Product[]{bookFirst, bookSecond, bookThird};
+        Product[] expected = new Product[]{bookFirst, bookSecond, bookThird, smartphoneFirst};
 
         assertArrayEquals(expected, actual);
     }
 
     @Test
-    void shouldItem() {
+    void shouldSearchItem() {
         ProductManager manager = new ProductManager();
 
         manager.add(bookFirst);
@@ -58,12 +59,48 @@ class ProductTest {
 
         manager.searchBy("Первая книга");
 
-        Product[] actual = manager.searchBy("Первая книга");
+
+
+        Product[] actual = manager.searchBy ("Первая книга");
         Product[] expected = new Product[]{bookFirst};
 
         assertArrayEquals(expected, actual);
 
 
+    }
+
+    @Test
+    void shouldNoItem() {
+        ProductManager manager = new ProductManager();
+
+        manager.add(bookFirst);
+        manager.add(bookSecond);
+        manager.add(bookThird);
+        manager.add(smartphoneFirst);
+        manager.add(SmartphoneSecond);
+
+        manager.searchBy("Десятая книга");
+
+        Product[] actual = manager.searchBy("Десятая книга");
+        Product[] expected = new Product[]{};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldAddOneItemAndDelOneItem() {
+        ProductManager manager = new ProductManager();
+
+
+        manager.add(bookFirst);
+
+
+        manager.delId(idDel);
+
+        Product[] actual = manager.findAll();
+        Product[] expected = new Product[]{};
+
+        assertArrayEquals(expected, actual);
     }
 
 }
