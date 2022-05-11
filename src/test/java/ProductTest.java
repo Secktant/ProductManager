@@ -60,8 +60,7 @@ class ProductTest {
         manager.searchBy("Первая книга");
 
 
-
-        Product[] actual = manager.searchBy ("Первая книга");
+        Product[] actual = manager.searchBy("Первая книга");
         Product[] expected = new Product[]{bookFirst};
 
         assertArrayEquals(expected, actual);
@@ -103,4 +102,40 @@ class ProductTest {
         assertArrayEquals(expected, actual);
     }
 
+
+    @Test
+    void ShouldEmptySearch() {
+        ProductManager manager = new ProductManager();
+
+        manager.add(bookFirst);
+        manager.add(bookSecond);
+        manager.add(bookThird);
+        manager.add(smartphoneFirst);
+        manager.add(SmartphoneSecond);
+
+        manager.searchBy("34535345345345345345");
+
+        Product[] actual = manager.searchBy("345345");
+        Product[] expected = new Product[]{};
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldTwoItems() {
+        ProductManager manager = new ProductManager();
+
+
+        manager.add(bookSecond);
+        manager.add(bookFirst);
+
+        manager.searchBy("Первая книга");
+        manager.searchBy("Вторая книга");
+
+
+        Product[] actual = manager.findAll();
+        Product[] expected = new Product[]{bookSecond, bookFirst};
+
+        assertArrayEquals(expected, actual);
+    }
 }
