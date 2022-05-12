@@ -113,7 +113,7 @@ class ProductTest {
         manager.add(smartphoneFirst);
         manager.add(SmartphoneSecond);
 
-        manager.searchBy("34535345345345345345");
+        manager.searchBy("2342432432423432");
 
         Product[] actual = manager.searchBy("345345");
         Product[] expected = new Product[]{};
@@ -128,14 +128,15 @@ class ProductTest {
 
         manager.add(bookSecond);
         manager.add(bookFirst);
+        manager.add(smartphoneFirst);
 
-        manager.searchBy("Первая книга");
-        manager.searchBy("Вторая книга");
+        manager.searchBy("книга");
 
 
-        Product[] actual = manager.findAll();
+        Product[] actual = manager.searchBy("книга");
         Product[] expected = new Product[]{bookSecond, bookFirst};
 
         assertArrayEquals(expected, actual);
+
     }
 }
