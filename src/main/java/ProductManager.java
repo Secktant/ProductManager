@@ -39,12 +39,12 @@ public class ProductManager {
                 for (int i = 0; i < result.length; i++) {
                     tmp[i] = result[i];
                 }
-                    tmp[tmp.length - 1] = product;
-                    result = tmp;
-                }
-                // "добавляем в конец" массива result продукт product
-
+                tmp[tmp.length - 1] = product;
+                result = tmp;
             }
+            // "добавляем в конец" массива result продукт product
+
+        }
 
 
         return result;
