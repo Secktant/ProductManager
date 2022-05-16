@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
     int idDel = 1;
+    int idDelTwo = 99;
 
 
     Book bookFirst = new Book(1, "Первая книга", "Тарковский");
@@ -102,6 +103,24 @@ class ProductTest {
         assertArrayEquals(expected, actual);
     }
 
+    @Test
+    void DelNonexistent() {
+        ProductManager manager = new ProductManager();
+
+
+        manager.add(bookFirst);
+
+
+        //    manager.delId(idDelTwo);
+
+        // Product[] actual = manager.findAll();
+        //Product[] expected = new Product[]{};
+
+        assertThrows(NotFoundException.class, () -> {
+            manager.delId(idDelTwo);
+        });
+    }
+
 
     @Test
     void ShouldEmptySearch() {
@@ -139,4 +158,6 @@ class ProductTest {
         assertArrayEquals(expected, actual);
 
     }
+
+
 }
